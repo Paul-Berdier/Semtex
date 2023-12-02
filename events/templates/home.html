@@ -1,0 +1,20 @@
+<!-- templates/home.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Bienvenue dans Ma Boutique en Ligne{% endblock %}
+
+{% block content %}
+    <h1>Bienvenue dans Semtex</h1>
+    <p>
+        Découvrez une sélection exceptionnelle de produits de haute qualité.
+        Parcourez notre catalogue et trouvez les articles parfaits pour vous.
+    </p>
+    <p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'profil' %}">Voir mon profil</a>
+        {% else %}
+            <a href="{% url 'login' %}">Connectez-vous</a> pour voir plus.
+        {% endif %}
+    </p>
+{% endblock %}

@@ -1,0 +1,19 @@
+<!-- templates/passer_commande.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Passer une Commande</h1>
+  <h2>{{ produit.nom }}</h2>
+  <p>Prix : {{ produit.prix }}</p>
+  <p>Quantité disponible : {{ produit.quantite_disponible }}</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <label for="quantite">Quantité :</label>
+    <input type="number" name="quantite" required>
+    <label for="adresse_livraison">Adresse de Livraison :</label>
+    <textarea name="adresse_livraison" required></textarea>
+    <button type="submit">Passer la Commande</button>
+  </form>
+{% endblock %}

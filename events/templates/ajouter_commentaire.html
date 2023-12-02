@@ -1,0 +1,15 @@
+<!-- templates/ajouter_commentaire.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Ajouter un Commentaire</h1>
+  <h2>{{ produit.nom }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    <label for="contenu">Contenu :</label>
+    <textarea name="contenu" required></textarea>
+    <button type="submit">Ajouter Commentaire</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+<!-- templates/liste_produits.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Liste des Produits{% endblock %}
+
+{% block content %}
+    <h1>Liste des Produits</h1>
+    <ul>
+        {% for produit in produits %}
+            <li><a href="{% url 'detail_produit' produit.id %}">{{ produit.nom }} - {{ produit.prix }} €</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

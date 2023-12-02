@@ -1,0 +1,27 @@
+<!-- templates/detail_produit.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Détails du Produit</h1>
+  <h2>{{ produit.nom }}</h2>
+  <p>{{ produit.description }}</p>
+  <p>Prix : {{ produit.prix }}</p>
+  <p>Quantité disponible : {{ produit.quantite_disponible }}</p>
+
+  <h3>Commentaires :</h3>
+  <ul>
+    {% for commentaire in commentaires %}
+      <li>{{ commentaire.contenu }} - {{ commentaire.auteur.username }}</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'passer_commande' produit.id %}">Passer une commande</a>
+
+  <form method="post" action="{% url 'ajouter_commentaire' produit.id %}">
+    {% csrf_token %}
+    <label for="contenu">Ajouter un commentaire :</label>
+    <textarea name="contenu" required></textarea>
+    <button type="submit">Ajouter</button>
+  </form>
+{% endblock %}
